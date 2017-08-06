@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+shadowJar.archiveName = 'AutoReleaseSample.jar'
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+  }
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+def defaultEncoding = 'UTF-8'
+
+tasks.withType(AbstractCompile) each { it.options.encoding = defaultEncoding }
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'com.amazonaws:aws-lambda-java-core:1.1.0'
+}
+
+
+
+
