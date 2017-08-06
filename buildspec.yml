@@ -1,0 +1,17 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - chmod 777 ./gradlew
+  build:
+    commands:
+      - ./gradlew shadowJar
+  post_build:
+    commands:
+      - aws cloudformation package --template-file minimum-lambda-java-model.yaml --output-template-file packaged-minimum-lambda-java-model.yaml --s3-bucket auto-release-sample
+artifacts:
+  type: zip
+  files:
+    - packaged-minimum-lambda-java-model.yaml
+

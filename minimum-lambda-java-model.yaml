@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Description at top of SAM(Serverless Application Model) file.
+Resources:
+  SampleMinimumJavaLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: 'codepipelinesample.Main::start'
+      Runtime: java8
+      CodeUri: ./build/libs/AutoReleaseSample.jar
+      Description: 'Description under Properties of Lambda'
